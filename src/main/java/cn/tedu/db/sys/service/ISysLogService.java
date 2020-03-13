@@ -2,7 +2,7 @@ package cn.tedu.db.sys.service;
 
 import cn.tedu.db.common.pojo.PageObjectVO;
 import cn.tedu.db.sys.pojo.SysLogDO;
-import cn.tedu.db.sys.service.ex.NoRecoredException;
+import cn.tedu.db.sys.service.ex.NoRecordException;
 
 /**
  *
@@ -14,9 +14,9 @@ public interface ISysLogService {
      * @param currentPage 当前页码
      * @return 该页日志信息
      * @throws PageNumberException
-     * @throws NoRecoredException
+     * @throws NoRecordException
      */
     PageObjectVO<SysLogDO> findSysLog(String username,
                                       Integer currentPage)
-                                    throws NoRecoredException;
+                                    throws NoRecordException;
 }

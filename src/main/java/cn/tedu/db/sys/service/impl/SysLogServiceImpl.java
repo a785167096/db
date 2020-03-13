@@ -4,7 +4,7 @@ import cn.tedu.db.common.pojo.PageObjectVO;
 import cn.tedu.db.sys.mapper.SysLogMapper;
 import cn.tedu.db.sys.pojo.SysLogDO;
 import cn.tedu.db.sys.service.ISysLogService;
-import cn.tedu.db.sys.service.ex.NoRecoredException;
+import cn.tedu.db.sys.service.ex.NoRecordException;
 import cn.tedu.db.sys.service.ex.PageNumberException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class SysLogServiceImpl implements ISysLogService {
     private Integer pageSize=2;// 指定每页的数据条数
 
     @Override
-    public PageObjectVO<SysLogDO> findSysLog(String username, Integer currentPage) throws NoRecoredException {
+    public PageObjectVO<SysLogDO> findSysLog(String username, Integer currentPage) throws NoRecordException {
         //判断currentPage是否为null或<1
         if (currentPage == null || currentPage < 1) {
             throw new PageNumberException("当前页码错误");
