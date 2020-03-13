@@ -1,11 +1,11 @@
 package cn.tedu.db.common.controller;
 
-import cn.tedu.db.sys.service.ex.NoRecordException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tedu.db.common.ex.ServiceException;
 import cn.tedu.db.common.pojo.JsonResult;
+import cn.tedu.db.sys.service.ex.NoRecordException;
 import cn.tedu.db.sys.service.ex.PageNumberException;
 
 /**
@@ -13,6 +13,9 @@ import cn.tedu.db.sys.service.ex.PageNumberException;
  * 封装统一异常处理的逻辑
  */
 public abstract class BaseController {
+	
+	public static final int STATE_SUCCESS=20; // 正常响应时的状态码
+	public static final String MSG_SUCCESS="OK"; //正常响应时的消息
 	
 	@ExceptionHandler(ServiceException.class)
 	@ResponseBody
