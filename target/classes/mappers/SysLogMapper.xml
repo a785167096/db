@@ -4,28 +4,30 @@
 <mapper namespace="cn.tedu.db.sys.mapper.SysLogMapper">
 
 	<sql id="queryWhereId">
-		from sys_logs
+		from sys_logs 
 		<where>
 			<if test="username!=null and username!=''">
-				username like concat("%",#{username},"%")
+				username like concat("%",#{username},"%")		
 			</if>
 		</where>
 	</sql>
 
-	<!--基于条件查询日志记录条数
-	int getRowCount(@Param("username")String username);-->
+	<!-- 基于条件查询日志记录条数 -->
+	<!-- int getRowCount(@Param("username")String username) -->
 	<select id="getRowCount" resultType="int">
-		SELECT
-			count(*)
+		select count(*) 
 		<include refid="queryWhereId"></include>
 	</select>
+	
+	
 
-	<!--基于条件查询一页的日志数据
-	List<SysLogDo>listSysLog(@Param("username")String username,
-	@Param("recordIndex")int recordIndex,@Param("pageSize")int pageSize);-->
+	<!-- 基于条件查询一页的日志数据 -->
+	<!-- List<SysLogDO> listSysLog(@Param("username")String username,
+							@Param("recordIndex")int recordIndex,
+							@Param("pageSize")int pageSize); -->
 	<select id="listSysLog" resultType="cn.tedu.db.sys.pojo.SysLogDO">
-		select *
-		<include refid="queryWhereId"></include>
+		select  * 
+		<include refid="queryWhereId"></include> 
 		order by createdTime desc
 		limit #{recordIndex},#{pageSize}
 	</select>
